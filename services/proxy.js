@@ -11,6 +11,7 @@ module.exports = createProxyMiddleware({
     },
 
     onError: (err, req, res, next) => {
+        console.log("error in proxy", err);
         next(err);
     }
 });

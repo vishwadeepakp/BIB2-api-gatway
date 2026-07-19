@@ -6,7 +6,7 @@ const security = require("./middleware/security");
 
 // const limiter = require("./middleware/rateLimiter");
 
-// const gateway = require("./routes/gateway");
+const gateway = require("./routes/gateway");
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 
 // app.use(limiter);
 
-// app.use("/users", gateway);
+app.use("/users", gateway);
 
 // app.use(express.json());
 

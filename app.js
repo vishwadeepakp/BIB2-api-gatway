@@ -6,7 +6,7 @@ const security = require("./middleware/security");
 
 // const limiter = require("./middleware/rateLimiter");
 
-const gateway = require("./routes/gateway");
+// const gateway = require("./routes/gateway");
 
 const app = express();
 

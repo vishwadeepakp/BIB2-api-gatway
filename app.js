@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 
 // app.use(limiter);
 
-app.use("/users", gateway);
+// app.use("/users", gateway);
 
 // app.use(express.json());
 

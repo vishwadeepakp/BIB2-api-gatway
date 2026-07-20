@@ -23,6 +23,7 @@ app.use("/users", gateway);
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error in User Api Gatway';
+    res.status(statusCode).json({ error: message });
 })
 
 module.exports = app;

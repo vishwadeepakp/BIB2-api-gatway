@@ -1,4 +1,4 @@
-const { createProxyMiddleware, fixRequestBody } = require("http-proxy-middleware");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = createProxyMiddleware({
 
@@ -7,12 +7,11 @@ module.exports = createProxyMiddleware({
     changeOrigin: true,
 
     pathRewrite: {
-        "^/": "/users/"
+        "^/": "/ai/"
     },
 
- 
-onProxyReq: (proxyReq, req, res) => {
-        console.log("========== Proxy Request in Users Service ==========");
+    onProxyReq: (proxyReq, req, res) => {
+        console.log("========== Proxy Request in Ai Service ==========");
         console.log("Method :", req.method);
         console.log("URL    :", req.originalUrl);
         console.log("Target :", process.env.USER_SERVICE);
@@ -21,7 +20,7 @@ onProxyReq: (proxyReq, req, res) => {
     },
 
     onProxyRes: (proxyRes, req, res) => {
-        console.log("========== Proxy Response in Users Service =========");
+        console.log("========== Proxy Response in Ai Service =========");
         console.log("Method      :", req.method);
         console.log("URL         :", req.originalUrl);
         console.log("Status Code :", proxyRes.statusCode);
@@ -30,7 +29,7 @@ onProxyReq: (proxyReq, req, res) => {
     },
 
     onError: (err, req, res, next) => {
-        console.error("========== Proxy Error in Users Service ==========");
+        console.error("========== Proxy Error in Ai Service ==========");
         console.error(err);
         console.error("=================================");
         next(err);

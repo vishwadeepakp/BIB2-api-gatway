@@ -8,6 +8,9 @@ const security = require("./middleware/security");
 
 const gateway = require("./routes/gateway");
 
+const aiGateway = require("./routes/ai");
+
+
 const app = express();
 
 security(app);
@@ -17,6 +20,9 @@ app.use(morgan("dev"));
 // app.use(limiter);
 
 app.use("/users", gateway);
+
+app.use("/ai", aiGateway);
+
 
 // app.use(express.json());
 

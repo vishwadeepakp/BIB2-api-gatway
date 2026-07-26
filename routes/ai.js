@@ -6,7 +6,7 @@ const proxy = require("../services/aiProxy");
 
 const router = express.Router();
 
-// router.use(auth);
+router.use(auth);
 
 router.post("/send-text", proxy);
 

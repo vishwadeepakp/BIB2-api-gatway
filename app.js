@@ -2,6 +2,8 @@ const express = require("express");
 
 const morgan = require("morgan");
 
+const cookieParser = require('cookie-parser');
+
 const security = require("./middleware/security");
 
 // const limiter = require("./middleware/rateLimiter");
@@ -16,6 +18,8 @@ const app = express();
 security(app);
 
 app.use(morgan("dev"));
+
+app.use(cookieParser());
 
 // app.use(limiter);
 

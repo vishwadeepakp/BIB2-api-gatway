@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.use(auth);
 
-router.post("/send-text", proxy);
+router.use("/", proxy);
 
 module.exports = router;

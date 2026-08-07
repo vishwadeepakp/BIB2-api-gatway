@@ -10,6 +10,10 @@ module.exports = createProxyMiddleware({
         "^/": "/users/"
     },
 
+    proxyTimeout: 5000, // Set the timeout to 5 seconds
+
+    timeout: 5000, // Set the timeout to 10 seconds
+
  
 onProxyReq: (proxyReq, req, res) => {
         console.log("========== Proxy Request in Users Service ==========");

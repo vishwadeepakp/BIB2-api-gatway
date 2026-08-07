@@ -6,9 +6,9 @@ module.exports = createProxyMiddleware({
 
     changeOrigin: true,
 
-    pathRewrite: {
-        "^/": "/users/"
-    },
+    // pathRewrite: {
+    //     "^/": "/users/"
+    // },
 
     proxyTimeout: 5000, // Set the timeout to 5 seconds
 

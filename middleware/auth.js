@@ -4,8 +4,9 @@ const PublicUrl = ['/register']
 
 module.exports = (req, res, next) => {
     try {
-        console.log('req.cookies?.accessToken', req.cookies?.accessToken, req.headers.cookie);
-        const token = req.cookies?.accessToken || req.headers.authorization?.split(' ')[1];
+        const token = req.cookies?.accessToken;
+        console.log('token :: ', token);
+
         if (PublicUrl.includes(req.path)) {
             return next();
         }
@@ -23,7 +24,9 @@ module.exports = (req, res, next) => {
         // 3. Downstream Microservices के लिए यूजर की जानकारी Headers में इन्जेक्ट करें
         // ताकि दूसरी माइक्रोसर्विसेज़ को सीधे `req.headers['x-user-id']` से यूजर की डिटेल्स मिल जाएँ
         req.headers['x-user-id'] = decoded.userId;
-        req.headers['x-user-role'] = decoded.role;
+        // req.headers['x-user-role'] = decoded.role;
+        console.log("decoded :: ",  decoded,  req.headers['x-user-id']);
+
 
         next(); 
     } catch (error) {

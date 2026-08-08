@@ -8,12 +8,21 @@ module.exports = (app) => {
 
     app.use(helmet());
 
-    app.use(cors(
-        {
-            origin: process.env.CORS_ORIGIN || "*",
-            credentials: true
-        }
-    ));
+    app.use(cors({
+        origin: (origin, callback) => {
+            const allowedOrigins = (process.env.CORS_ORIGIN || "*")
+                .split(",")
+                .map((item) => item.trim())
+                .filter(Boolean);
+
+            if (!origin || allowedOrigins.includes("*") || allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            }
+
+            return callback(null, false);
+        },
+        credentials: true
+    }));
 
     app.use(compression());
 

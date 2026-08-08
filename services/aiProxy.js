@@ -6,9 +6,9 @@ module.exports = createProxyMiddleware({
 
     changeOrigin: true,
 
-    pathRewrite: {
-        "^/": "/ai/"
-    },
+    // pathRewrite: {
+    //     "^/": "/ai/"
+    // },
 
     onProxyReq: (proxyReq, req, res) => {
         console.log("========== Proxy Request in Ai Service ==========");

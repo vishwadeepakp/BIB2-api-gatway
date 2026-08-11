@@ -12,6 +12,9 @@ const gateway = require("./routes/gateway");
 
 const aiGateway = require("./routes/ai");
 
+const stockGateway = require("./routes/stock");
+
+
 
 const app = express();
 
@@ -26,6 +29,9 @@ app.use(cookieParser());
 app.use("/users", gateway);
 
 app.use("/ai", aiGateway);
+
+app.use("/stock", stockGateway);
+
 
 
 // app.use(express.json());

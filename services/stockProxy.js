@@ -2,12 +2,12 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = createProxyMiddleware({
 
-    target: process.env.USER_SERVICE,
+    target: process.env.STOCK_SERVICE,
 
     changeOrigin: true,
 
     onProxyReq: (proxyReq, req, res) => {
-        console.log("========== Proxy Request in Ai Service ==========");
+        console.log("========== Proxy Request in stock Service =========");
         console.log("Method :", req.method);
         console.log("URL    :", req.originalUrl);
         console.log("Target :", process.env.USER_SERVICE);
@@ -16,7 +16,7 @@ module.exports = createProxyMiddleware({
     },
 
     onProxyRes: (proxyRes, req, res) => {
-        console.log("========== Proxy Response in Ai Service =========");
+        console.log("========== Proxy Response in stock Service =========");
         console.log("Method      :", req.method);
         console.log("URL         :", req.originalUrl);
         console.log("Status Code :", proxyRes.statusCode);
@@ -25,7 +25,7 @@ module.exports = createProxyMiddleware({
     },
 
     onError: (err, req, res, next) => {
-        console.error("========== Proxy Error in Ai Service ==========");
+        console.error("========== Proxy Error in stock Service ==========");
         console.error(err);
         console.error("=================================");
         next(err);

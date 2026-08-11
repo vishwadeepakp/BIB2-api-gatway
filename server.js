@@ -8,6 +8,20 @@ app.get("/", (req, res) => {
     res.send("Getway is alive")
 });
 
+app.get('/api/warmup', async (req, res) => {
+    // दोनों Render Microservices को एक साथ जघाने के लिए Parallel Call
+    Promise.allSettled([
+        fetch(process.env.EMAIL_SERVICE),
+        fetch(process.env.STOCK_SERVICE)
+    ]);
+
+    // UI/Frontend को तुरंत रिस्पॉन्स दो ताकि वो वेट न करे
+    return res.status(200).json({
+        success: true,
+        message: 'Warmup signal sent to both services!'
+    });
+});
+
 process.on('unhandledRejection', (reason, promise) => {
     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });

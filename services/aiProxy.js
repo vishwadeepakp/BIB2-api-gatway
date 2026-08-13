@@ -24,10 +24,13 @@ module.exports = createProxyMiddleware({
         console.log("===================================");
     },
 
-    onError: (err, req, res, next) => {
+    onError: (err, req, res) => {
         console.error("========== Proxy Error in Ai Service ==========");
         console.error(err);
         console.error("=================================");
-        next(err);
+        res.status(500).json({
+            message: "Proxy Error: Target Service AI",
+            error: err.message
+        });
     },
 });

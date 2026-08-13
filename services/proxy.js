@@ -14,8 +14,8 @@ module.exports = createProxyMiddleware({
 
     timeout: 5000, // Set the timeout to 10 seconds
 
- 
-onProxyReq: (proxyReq, req, res) => {
+
+    onProxyReq: (proxyReq, req, res) => {
         console.log("========== Proxy Request in Users Service ==========");
         console.log("Method :", req.method);
         console.log("URL    :", req.originalUrl);
@@ -33,10 +33,13 @@ onProxyReq: (proxyReq, req, res) => {
         console.log("===================================");
     },
 
-    onError: (err, req, res, next) => {
+    onError: (err, req, res) => {
         console.error("========== Proxy Error in Users Service ==========");
         console.error(err);
         console.error("=================================");
-        next(err);
+        res.status(500).json({
+            message: "Proxy Error: Target Service USER",
+            error: err.message
+        });
     },
 });

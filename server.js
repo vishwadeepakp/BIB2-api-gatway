@@ -12,7 +12,8 @@ app.get('/api/warmup', async (req, res) => {
     // दोनों Render Microservices को एक साथ जघाने के लिए Parallel Call
     Promise.allSettled([
         fetch(process.env.EMAIL_SERVICE),
-        fetch(process.env.STOCK_SERVICE)
+        fetch(process.env.STOCK_SERVICE),
+        fetch(process.env.USER_SERVICE),
     ]);
 
     // UI/Frontend को तुरंत रिस्पॉन्स दो ताकि वो वेट न करे

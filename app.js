@@ -27,9 +27,8 @@ app.use(cookieParser());
 // app.use(limiter);
 
 app.use("/users", gateway);
-
 app.use("/ai", aiGateway);
-
+app.use("/profile", aiGateway);
 app.use("/stock", stockGateway);
 
 

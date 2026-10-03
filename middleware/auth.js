@@ -4,7 +4,7 @@ const PublicUrl = ['/register']
 
 module.exports = (req, res, next) => {
     try {
-        const token = req.cookies?.accessToken;
+        const token = req.cookies?.accessToken || req.headers['authorization']?.split(' ')[1]; // Authorization Header से Bearer Token निकालें
         console.log('token :: ', token);
 
         if (PublicUrl.includes(req.path)) {
